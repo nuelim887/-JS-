@@ -1,3 +1,4 @@
+console.log('app.js loaded from https://nuelim887.github.io/-JS-/app.js', new Date().toISOString());
 const firebaseConfig = {
   apiKey: "AIzaSyBEyWpxDCxGLohqW2yyu7IaRjT-FvoOf3E",
   authDomain: "webapp-project-fd0d7.firebaseapp.com",
