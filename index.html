@@ -1,145 +1,210 @@
-<!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <title>오늘의 급식 평가</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <style>
-        body {
-  background: #b5b8e9;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  margin: 0;
-  padding: 20px;
-  color: #333;
-  transition: background 0.5s, color 0.5s;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>index</title>
+  <style>
+    body {
+    background: #b5b8e9;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+    transition: background 0.5s, color 0.5s;
 }
+
 h2 {
-  text-align: center;
-  color: #3b3b3b;
-  margin-bottom: 25px;
-  font-weight: 1000;
-  letter-spacing: 0.5px;
-  font-size: 2.05em;
-  transition: color 0.5s;
+    text-align: center;
+    color: #3b3b3b;
+    margin-bottom: 25px;
+    font-weight: 1000;
+    letter-spacing: 0.5px;
+    font-size: 2.05em;
+    transition: color 0.5s;
 }
-body.dark h2 {
-  color: #fff;
-}
+
+body.dark h2 { color: #fff; }
+
 #menuList div {
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 16px;
-  padding: 18px;
-  margin: 14px 0;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  transition: transform 0.25s, box-shadow 0.25s, background 0.4s;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 16px;
+    padding: 18px;
+    margin: 14px 0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: transform 0.25s, box-shadow 0.25s, background 0.4s;
 }
+
 #menuList div:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
+
 #menuList b {
-  font-size: 1.3em;
-  color: #2c2c2c;
+    font-size: 1.3em;
+    color: #2c2c2c;
 }
+
 #menuList p {
-  margin: 8px 0;
-  color: #666;
-  font-size: 0.95em;
+    margin: 8px 0;
+    color: #666;
+    font-size: 0.95em;
 }
+
 #menuList button {
-  background: linear-gradient(135deg, #fff8b0, #ffe680);
-  border: none;
-  border-radius: 8px;
-  font-size: 20px;
-  cursor: pointer;
-  margin: 4px;
-  padding: 6px 10px;
-  color: #333;
-  transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
+    background: linear-gradient(135deg, #fff8b0, #ffe680);
+    border: none;
+    border-radius: 8px;
+    font-size: 20px;
+    cursor: pointer;
+    margin: 4px;
+    padding: 6px 10px;
+    color: #333;
+    transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
 }
+
 #menuList button:hover {
-  transform: scale(1.2);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transform: scale(1.2);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
+
 #menuList button:disabled {
-  opacity: 0.5;
-  cursor: pointer;
-  box-shadow: none;
+    opacity: 0.5;
+    cursor: pointer;
+    box-shadow: none;
 }
-p {
-  text-align: center;
-  font-size: 0.9em;
-  color: #555;
-  margin-top: 20px;
-}
-#menuList {
-  max-width: 600px;
-  margin: auto;
-}
-#themeContainer {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 1000;
-}
+
+p { text-align: center; font-size: 0.9em; color: #555; margin-top: 20px; }
+
+#menuList { max-width: 600px; margin: auto; }
+
+#themeContainer { position: fixed; top: 20px; right: 20px; z-index: 1000; }
+
 .theme-icon {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 22px;
-  cursor: pointer;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-  transition: transform 0.3s, background 0.3s;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    transition: transform 0.3s, background 0.3s;
 }
-.theme-icon.main {
-  background: #fff;
-}
+
+.theme-icon.main { background: #fff; }
+
 .theme-options {
-  position: absolute;
-  top: 55px;
-  right: 0;
-  display: none;
-  flex-direction: column;
-  gap: 10px;
+    position: absolute;
+    top: 55px;
+    right: 0;
+    display: none;
+    flex-direction: column;
+    gap: 10px;
 }
-.theme-options.show {
-  display: flex;
-}
+
+.theme-options.show { display: flex; }
+
 .theme-icon.option[data-theme="default"] { background: #eaeaea; }
 .theme-icon.option[data-theme="light"] { background: #fff9c4; }
 .theme-icon.option[data-theme="dark"] { background: #424242; color: #fff; }
+
 body.light { background:#ffffff; color:#222; }
 body.dark { background:#121212; color:#ddd; }
-    </style>
+
+#weeklyAverage, #monthlyAverage, #weeklyBest, #monthlyBest {
+    background:#f8f9ff;
+    border-radius:10px;
+    padding:10px;
+    font-weight:600;
+    color:#2a66e8;
+    font-size:0.95em;
+    box-shadow:0 2px 5px rgba(0,0,0,0.08);
+}
+#weeklyBest, #monthlyBest {
+    background:#f0fff3;
+    color:#009944;
+}
+
+#holidayMessage {
+    font-size: 1.2em;
+    font-weight: 700;
+    color: red;
+}
+
+.info-icon {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 48px;
+    height: 48px;
+    background: #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+    font-style: italic;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    z-index: 1000;
+    color: black;
+}
+
+.info-icon:hover::after {
+    content: "이 앱은 실행한 날짜의 급식 메뉴를 보여주고, 별점으로 평가할 수 있도록 만들어진 앱입니다.\A\A앱 우측 상단의 톱니바퀴 모양 버튼으로 기본/라이트/다크 테마 중 원하는 테마로 변경할 수 있습니다. ( 기본 : 톱니바퀴 / 라이트 : 태양 / 다크 : 달 )\A\A앱의 상단에서 주/월간 메뉴 평균 평점과 인기 1등 메뉴를 손쉽게 확인할 수 있습니다.";
+    white-space: pre-line;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    background: rgba(255,255,255,0.95);
+    color: #333;
+    padding: 12px;
+    border-radius: 8px;
+    width: 260px;
+    font-size: 0.85em;
+    font-style: normal;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+  </style>
+</head>
+<body>
+  <html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>오늘의 급식 평가</title>
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-<div id="themeContainer">
-  <div id="mainThemeIcon" class="theme-icon main">⚙️</div>
-  <div id="themeOptions" class="theme-options">
-    <div class="theme-icon option" data-theme="default">⚙️</div>
-    <div class="theme-icon option" data-theme="light">☀️</div>
-    <div class="theme-icon option" data-theme="dark">🌙</div>
-  </div>
-</div>
-<div style="font-family:'Noto Sans KR', sans-serif; max-width:720px; margin:20px auto; text-align:center;">
-  <h2 style="font-size:1.8em; margin-bottom:12px;">오늘의 급식 평가</h2>
-  <p id="menuMessage" style="font-size:1.1em; font-weight:bold; margin:10px 0; color:#666;">오늘 급식 메뉴를 평가해주세요.</p>
-  <p id="holidayMessage" style="display:none;"></p>
-  <div style="display:grid; gap:8px; margin-bottom:20px;">
-    <div id="weeklyAverage" style="background:#f8f9ff; border-radius:10px; padding:10px; font-weight:600; color:#2a66e8; font-size:0.95em; box-shadow:0 2px 5px rgba(0,0,0,0.08);"></div>
-    <div id="monthlyAverage" style="background:#f8f9ff; border-radius:10px; padding:10px; font-weight:600; color:#2a66e8; font-size:0.95em; box-shadow:0 2px 5px rgba(0,0,0,0.08);"></div>
-    <div id="weeklyBest" style="background:#f0fff3; border-radius:10px; padding:10px; font-weight:600; color:#009944; font-size:0.95em; box-shadow:0 2px 5px rgba(0,0,0,0.08);"></div>
-    <div id="monthlyBest" style="background:#f0fff3; border-radius:10px; padding:10px; font-weight:600; color:#009944; font-size:0.95em; box-shadow:0 2px 5px rgba(0,0,0,0.08);"></div>
-  </div>
-  <div id="menuList"></div>
-</div>
-<script src="https://nuelim887.github.io/-JS-/app.js"></script>
+    <div id="infoButton" class="info-icon">i</div>
+    <div id="themeContainer">
+        <div id="mainThemeIcon" class="theme-icon main">⚙️</div>
+        <div id="themeOptions" class="theme-options">
+            <div class="theme-icon option" data-theme="default">⚙️</div>
+            <div class="theme-icon option" data-theme="light">☀️</div>
+            <div class="theme-icon option" data-theme="dark">🌙</div>
+        </div>
+    </div>
+    <div style="font-family:'Noto Sans KR', sans-serif; max-width:720px; margin:20px auto; text-align:center;">
+        <h2>오늘의 급식 평가</h2>
+        <p id="menuMessage">오늘 급식 메뉴를 평가해주세요.</p>
+        <p id="holidayMessage" style="display:none;"></p>
+        <div style="display:grid; gap:8px; margin-bottom:20px;">
+            <div id="weeklyAverage"></div>
+            <div id="monthlyAverage"></div>
+            <div id="weeklyBest"></div>
+            <div id="monthlyBest"></div>
+        </div>
+        <div id="menuList"></div>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
+
 </body>
 </html>
