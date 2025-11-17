@@ -2,7 +2,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>오늘의 급식 평가</title>
+  <title>index</title>
   <style>
     body {
     background: #b5b8e9;
@@ -168,18 +168,20 @@ body.dark { background:#121212; color:#ddd; }
     box-shadow: 0 2px 6px rgba(0,0,0,0.15);
 }
 
+#credit {
+    position: fixed;
+    top: 80px;
+    right: 22px;
+    font-size: 0.75em;
+    color: #777;
+    z-index: 1000;
+}
   </style>
 </head>
 <body>
-  <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <title>오늘의 급식 평가</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700&display=swap" rel="stylesheet">
-</head>
-<body>
+
     <div id="infoButton" class="info-icon">i</div>
+
     <div id="themeContainer">
         <div id="mainThemeIcon" class="theme-icon main">⚙️</div>
         <div id="themeOptions" class="theme-options">
@@ -188,6 +190,9 @@ body.dark { background:#121212; color:#ddd; }
             <div class="theme-icon option" data-theme="dark">🌙</div>
         </div>
     </div>
+
+    <div id="credit">Made by. 임누엘</div>
+
     <div style="font-family:'Noto Sans KR', sans-serif; max-width:720px; margin:20px auto; text-align:center;">
         <h2>오늘의 급식 평가</h2>
         <p id="menuMessage">오늘 급식 메뉴를 평가해주세요.</p>
@@ -200,12 +205,10 @@ body.dark { background:#121212; color:#ddd; }
         </div>
         <div id="menuList"></div>
     </div>
+
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
     <script src="app.js"></script>
-</body>
-</html>
 
 </body>
 </html>
-
