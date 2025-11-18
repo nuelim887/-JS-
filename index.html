@@ -34,7 +34,8 @@
       padding: 18px;
       margin: 14px 0;
       box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-      transition: transform 0.25s, box-shadow 0.25s, background 0.4s;
+      transition: transform 0.25s, box-shadow 0.25s, background 0.4s, color 0.4s, border-color 0.4s;
+      color: inherit;
     }
 
     #menuList div:hover {
@@ -115,6 +116,15 @@
     body.light { background:#ffffff; color:#222; }
     body.dark { background:#121212; color:#ddd; }
 
+    body.dark #menuList div {
+      background: #1e1e1f;
+      border-color: #2b2b2b;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+    }
+
+    body.dark #menuList b { color: #ffffff; }
+    body.dark #menuList div, body.dark #menuList div * { color: #e6e6e6; }
+
     #weeklyAverage, #monthlyAverage, #weeklyBest, #monthlyBest {
       background:#f8f9ff;
       border-radius:10px;
@@ -127,6 +137,17 @@
     #weeklyBest, #monthlyBest {
       background:#f0fff3;
       color:#009944;
+    }
+
+    body.dark #weeklyAverage, body.dark #monthlyAverage {
+      background: rgba(255,255,255,0.04);
+      color: #cfe0ff;
+      box-shadow: none;
+    }
+    body.dark #weeklyBest, body.dark #monthlyBest {
+      background: rgba(255,255,255,0.02);
+      color: #b7f5d1;
+      box-shadow: none;
     }
 
     #holidayMessage {
