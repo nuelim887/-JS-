@@ -134,8 +134,7 @@ function createCard(menu,avg,count,isRated,dateStr){
   const card = document.createElement("div");
   const title = document.createElement("b");
   title.textContent = menu;
-  // info를 <p>로 변경
-  const info = document.createElement("p");
+  const info = document.createElement("div");
   info.textContent = typeof avg==="string"?`평균 평점 : ${avg}`:`평균 평점 : ${avg} (평가 ${count}개)`;
   const buttonsDiv = document.createElement("div");
 
