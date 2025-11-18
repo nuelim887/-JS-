@@ -136,6 +136,8 @@ function createCard(menu,avg,count,isRated,dateStr){
   title.textContent = menu;
   const info = document.createElement("div");
   info.textContent = typeof avg==="string"?`평균 평점 : ${avg}`:`평균 평점 : ${avg} (평가 ${count}개)`;
+  info.style.opacity = '1';
+  info.style.color = 'inherit';
   const buttonsDiv = document.createElement("div");
 
   for(let i=1;i<=5;i++){
@@ -170,9 +172,9 @@ function loadTodayMenu(){
   computeWeeklyMonthlyAverages();
 
   if(!meals[day]){
-    if(messageP){ messageP.style.color="red"; messageP.style.textAlign="center"; messageP.style.fontWeight="700"; messageP.style.fontSize="1.2em"; messageP.textContent="오늘의 급식 메뉴를 찾을 수 없습니다."; }
+    if(messageP){ messageP.style.color="red"; messageP.style.textAlign="center"; messageP.style.fontWeight="700"; messageP.style.fontSize="1.2em"; messageP.textContent="오늘의 급식 메뉴를[...]";
     if(menuListDiv) menuListDiv.innerHTML="";
-    if(holidayMessageEl){ holidayMessageEl.style.display="block"; holidayMessageEl.textContent="즐거운 휴일 되세요!"; holidayMessageEl.style.color="#888"; holidayMessageEl.style.fontSize="1em"; }
+    if(holidayMessageEl){ holidayMessageEl.style.display="block"; holidayMessageEl.textContent="즐거운 휴일 되세요!"; holidayMessageEl.style.color="#888"; holidayMessageEl.style.fontSize=[...]
     return;
   }
 
