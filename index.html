@@ -1,32 +1,31 @@
-<!doctype html>
 <html lang="ko">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>오늘의 급식 평가</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     body {
       background: #b5b8e9;
-      font-family: 'Noto Sans KR', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
       padding: 20px;
       color: #333;
-      transition: background 0.4s, color 0.4s;
+      transition: background 0.5s, color 0.5s;
     }
 
     h2 {
       text-align: center;
       color: #3b3b3b;
       margin-bottom: 25px;
-      font-weight: 800;
+      font-weight: 1000;
       letter-spacing: 0.5px;
       font-size: 2.05em;
-      transition: color 0.4s;
+      transition: color 0.5s;
     }
 
-    #menuList { max-width: 600px; margin: auto; }
+    body.dark h2 { color: #fff; }
 
     #menuList div {
       background: #fff;
@@ -35,17 +34,24 @@
       padding: 18px;
       margin: 14px 0;
       box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-      transition: transform 0.25s, box-shadow 0.25s, background 0.3s, color 0.3s;
-      color: inherit;
+      transition: transform 0.25s, box-shadow 0.25s, background 0.4s;
     }
 
     #menuList div:hover {
       transform: translateY(-4px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
     }
 
-    #menuList b { font-size: 1.3em; color: #2c2c2c; }
-    #menuList p { margin: 8px 0; color: #666; font-size: 0.95em; }
+    #menuList b {
+      font-size: 1.3em;
+      color: #2c2c2c;
+    }
+
+    #menuList p {
+      margin: 8px 0;
+      color: #666;
+      font-size: 0.95em;
+    }
 
     #menuList button {
       background: linear-gradient(135deg, #fff8b0, #ffe680);
@@ -56,12 +62,12 @@
       margin: 4px;
       padding: 6px 10px;
       color: #333;
-      transition: transform 0.18s, box-shadow 0.18s, opacity 0.18s;
+      transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
     }
 
     #menuList button:hover {
-      transform: scale(1.15);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.18);
+      transform: scale(1.2);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
 
     #menuList button:disabled {
@@ -70,20 +76,9 @@
       box-shadow: none;
     }
 
-    #weeklyAverage, #monthlyAverage, #weeklyBest, #monthlyBest {
-      background:#f8f9ff;
-      border-radius:10px;
-      padding:10px;
-      font-weight:600;
-      color:#2a66e8;
-      font-size:0.95em;
-      box-shadow:0 2px 5px rgba(0,0,0,0.08);
-    }
+    p { text-align: center; font-size: 0.9em; color: #555; margin-top: 20px; }
 
-    #weeklyBest, #monthlyBest {
-      background:#f0fff3;
-      color:#009944;
-    }
+    #menuList { max-width: 600px; margin: auto; }
 
     #themeContainer { position: fixed; top: 20px; right: 20px; z-index: 1000; }
 
@@ -97,7 +92,7 @@
       font-size: 22px;
       cursor: pointer;
       box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-      transition: transform 0.25s, background 0.25s;
+      transition: transform 0.3s, background 0.3s;
     }
 
     .theme-icon.main { background: #fff; }
@@ -117,6 +112,29 @@
     .theme-icon.option[data-theme="light"] { background: #fff9c4; }
     .theme-icon.option[data-theme="dark"] { background: #424242; color: #fff; }
 
+    body.light { background:#ffffff; color:#222; }
+    body.dark { background:#121212; color:#ddd; }
+
+    #weeklyAverage, #monthlyAverage, #weeklyBest, #monthlyBest {
+      background:#f8f9ff;
+      border-radius:10px;
+      padding:10px;
+      font-weight:600;
+      color:#2a66e8;
+      font-size:0.95em;
+      box-shadow:0 2px 5px rgba(0,0,0,0.08);
+    }
+    #weeklyBest, #monthlyBest {
+      background:#f0fff3;
+      color:#009944;
+    }
+
+    #holidayMessage {
+      font-size: 1.2em;
+      font-weight: 700;
+      color: red;
+    }
+
     .info-icon {
       position: fixed;
       top: 20px;
@@ -129,6 +147,7 @@
       justify-content: center;
       align-items: center;
       font-size: 22px;
+      font-style: italic;
       cursor: pointer;
       box-shadow: 0 2px 6px rgba(0,0,0,0.15);
       z-index: 1000;
@@ -136,7 +155,7 @@
     }
 
     .info-icon:hover::after {
-      content: "이 앱은 실행한 날짜의 급식 메뉴를 보여주고, 별점으로 평가할 수 있도록 만들어진 앱입니다.\A\A앱 우측 상단의 톱니바퀴 모양 버튼으로 기본/라이트/다크 테마 중 원하는 테마로 변경할 수 있습니다.\A\A앱의 상단에서 주/월간 메뉴 평균 평점과 인기 1등 메뉴를 확인할 수 있습니다.";
+      content: "이 앱은 실행한 날짜의 급식 메뉴를 보여주고, 별점으로 평가할 수 있도록 만들어진 앱입니다.\A\A앱 우측 상단의 톱니바퀴 모양 버튼으로 기본/라이트/다크 테마 중 원하는 테마로 변경할 수 있습니다. ( 기본 : 톱니바퀴 / 라이트 : 태양 / 다크 : 달 )\A\A앱의 상단에서 주/월간 메뉴 평균 평점과 인기 1등 메뉴를 손쉽게 확인할 수 있습니다.";
       white-space: pre-line;
       position: absolute;
       top: 60px;
@@ -161,45 +180,6 @@
       pointer-events: none;
       user-select: none;
     }
-
-
-    body.light { background: #ffffff; color: #222; }
-    body.dark  { background: #121212; color: #ddd; }
-
-
-    body.dark #menuList div {
-      background: #fff !important;
-      border-color: #ddd !important;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08) !important;
-      color: inherit !important;
-    }
-
-    body.dark #menuList b { color: #2c2c2c !important; }
-    body.dark #menuList p { color: #666 !important; }
-
-    body.dark #menuList button {
-      background: linear-gradient(135deg, #fff8b0, #ffe680) !important;
-      color: #333 !important;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.12) !important;
-    }
-
-    body.dark #weeklyAverage,
-    body.dark #monthlyAverage {
-      background: #f8f9ff !important;
-      color: #000 !important;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.08) !important;
-      font-weight: 700;
-    }
-
-    body.dark #weeklyBest,
-    body.dark #monthlyBest {
-      background: #f0fff3 !important;
-      color: #000 !important;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.08) !important;
-      font-weight: 700;
-    }
-
-    body.dark h2 { color: #fff; }
   </style>
 </head>
 <body>
@@ -216,18 +196,16 @@
 
   <div id="credit">Made by. 임누엘</div>
 
-  <div style="max-width:720px; margin:20px auto; text-align:center;">
+  <div style="font-family:'Noto Sans KR', sans-serif; max-width:720px; margin:20px auto; text-align:center;">
     <h2>오늘의 급식 평가</h2>
     <p id="menuMessage">오늘 급식 메뉴를 평가해주세요.</p>
     <p id="holidayMessage" style="display:none;"></p>
-
     <div style="display:grid; gap:8px; margin-bottom:20px;">
       <div id="weeklyAverage"></div>
       <div id="monthlyAverage"></div>
       <div id="weeklyBest"></div>
       <div id="monthlyBest"></div>
     </div>
-
     <div id="menuList"></div>
   </div>
 
